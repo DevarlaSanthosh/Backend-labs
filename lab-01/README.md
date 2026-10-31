@@ -1,7 +1,7 @@
 # Lab 1: Node.js and Express server
 
-**D Santhosh** · **252U1R8015** · **CSE-A**  
-*Faculty: Joel Prashanth D* · *Course: Backend Development Fundamentals (Year II Term II · Aurora)*
+**D Santhosh** · **252U1R8015** · **CSE-QE 2A**
+
 
 ---
 
@@ -57,7 +57,7 @@ The server supports configurable variables without hardcoding secrets:
 PORT=3000
 STUDENT_NAME=D Santhosh
 STUDENT_REG_NO=252U1R8015
-STUDENT_SECTION=CSE-A
+STUDENT_SECTION=CSE-QE 2A
 ```
 
 ### Installation
@@ -93,7 +93,7 @@ npm install
 | Method | Endpoint | Description | Status Code | Sample Response |
 | :--- | :--- | :--- | :---: | :--- |
 | `GET` | `/` | Returns plain text welcome message | `200 OK` | `Welcome to the Lab 1 Express Server!` |
-| `GET` | `/about` | Returns student details in JSON format | `200 OK` | `{"name":"D Santhosh","registrationNumber":"252U1R8015","section":"CSE-A"}` |
+| `GET` | `/about` | Returns student details in JSON format | `200 OK` | `{"name":"D Santhosh","registrationNumber":"252U1R8015","section":"CSE-QE 2A"}` |
 | `GET` | `/time` | Returns dynamic current server date and time | `200 OK` | `{"currentTime":"...","isoString":"...","timestamp":1793437545233}` |
 | `*` | Any other route (e.g., `/xyz`) | Catch-all 404 handler for undefined routes | `404 Not Found` | `{"error":"404 Not Found","message":"Cannot GET /xyz. Route does not exist."}` |
 
@@ -104,7 +104,7 @@ npm install
 > Place your browser or Postman screenshots in `screenshots/` and update these filenames if needed:
 
 - **GET /**: Welcome Route
-  ![GET /](screenshots/route_get.png)
+  ![GET /](screenshots/route_root.png)
 
 - **GET /about**: Student Info JSON
   ![GET /about](screenshots/route_about.png)
@@ -114,9 +114,7 @@ npm install
 
 - **404 Not Found Route**:
   ![404 Error](screenshots/route_404.png)
----
-
-
+  ---
 ## 6. Notes: Problems Faced & Solutions
 
 1. **Port Conflicts & Server Testing**:
