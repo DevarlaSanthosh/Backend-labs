@@ -6,8 +6,8 @@
 ---
 
 ### Live Link
-> **Deployment Status**: Not deployed yet (or replace with your live deployment URL e.g. `https://lab-01-express.onrender.com`).  
-> *Note*: If local testing is used for submission, full Postman / curl outputs and route verification logs are provided below and in the `screenshots/` directory.
+> **Deployment Status**:Deploy succeeded|Live 
+**link**:(`https://backend-labs-gy39.onrender.com/`).
 
 ---
 
