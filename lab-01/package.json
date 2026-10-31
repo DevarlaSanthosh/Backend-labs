@@ -3,9 +3,11 @@
   "version": "1.0.0",
   "description": "Lab 1: Node.js and Express server - Backend Development Fundamentals",
   "main": "index.js",
+  "type": "commonjs",
   "scripts": {
     "start": "node index.js",
-    "http": "node http-server.js"
+    "http": "node http-server.js",
+    "test": "node test-servers.js"
   },
   "keywords": [
     "nodejs",
