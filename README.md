@@ -3,7 +3,7 @@
 **Student Name:** D Santhosh  
 **Registration Number:** 252U1R8015  
 **Section:** CSE-A  
-**Faculty:** Joel Prashanth D  
+**Faculty:** 
 **Institution:** Aurora  
 
 ---
