@@ -22,7 +22,7 @@ app.get('/', (req, res) => {
 app.get('/about', (req, res) => {
   res.status(200).json({
     name: process.env.STUDENT_NAME || 'D Santhosh',
-    registrationNumber: process.env.STUDENT_REG_NO || '252U1R',
+    registrationNumber: process.env.STUDENT_REG_NO || '252U1R8015',
     section: process.env.STUDENT_SECTION || 'CSE-A'
   });
 });

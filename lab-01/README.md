@@ -1,6 +1,6 @@
 # Lab 1: Node.js and Express server
 
-**D Santhosh** · **252U1R** · **CSE-A**  
+**D Santhosh** · **252U1R8015** · **CSE-A**  
 *Faculty: Joel Prashanth D* · *Course: Backend Development Fundamentals (Year II Term II · Aurora)*
 
 ---
@@ -56,7 +56,7 @@ The server supports configurable variables without hardcoding secrets:
 ```env
 PORT=3000
 STUDENT_NAME=D Santhosh
-STUDENT_REG_NO=252U1R
+STUDENT_REG_NO=252U1R8015
 STUDENT_SECTION=CSE-A
 ```
 
@@ -93,7 +93,7 @@ npm install
 | Method | Endpoint | Description | Status Code | Sample Response |
 | :--- | :--- | :--- | :---: | :--- |
 | `GET` | `/` | Returns plain text welcome message | `200 OK` | `Welcome to the Lab 1 Express Server!` |
-| `GET` | `/about` | Returns student details in JSON format | `200 OK` | `{"name":"D Santhosh","registrationNumber":"252U1R","section":"CSE-A"}` |
+| `GET` | `/about` | Returns student details in JSON format | `200 OK` | `{"name":"D Santhosh","registrationNumber":"252U1R8015","section":"CSE-A"}` |
 | `GET` | `/time` | Returns dynamic current server date and time | `200 OK` | `{"currentTime":"...","isoString":"...","timestamp":1793437545233}` |
 | `*` | Any other route (e.g., `/xyz`) | Catch-all 404 handler for undefined routes | `404 Not Found` | `{"error":"404 Not Found","message":"Cannot GET /xyz. Route does not exist."}` |
 
