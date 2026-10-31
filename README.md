@@ -1,7 +1,7 @@
 # Backend Development Fundamentals (Year II Term II)
 
 **Student Name:** D Santhosh  
-**Registration Number:** REG12345678  
+**Registration Number:** 252U1R  
 **Section:** CSE-A  
 **Faculty:** Joel Prashanth D  
 **Institution:** Aurora  
@@ -28,3 +28,4 @@
 ## Repository Guidelines
 - Never commit `.env` or `node_modules/` (handled in `.gitignore`).
 - Every lab directory contains its own dedicated `README.md` and `screenshots/` directory.
+
