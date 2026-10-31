@@ -3,8 +3,6 @@
 **Student Name:** D Santhosh  
 **Registration Number:** 252U1R8015  
 **Section:** CSE-QE 2A  
-**Faculty:** 
-**Institution:** Aurora  
 
 ---
 
