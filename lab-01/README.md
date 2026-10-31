@@ -6,8 +6,7 @@
 ---
 
 ### Live Link
-> **Deployment Status**:Deploy succeeded|Live 
-**link**:(`https://backend-labs-gy39.onrender.com/`).
+**link**: https://backend-labs-gy39.onrender.com.
 
 ---
 
