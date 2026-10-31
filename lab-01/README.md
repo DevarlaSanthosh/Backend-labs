@@ -104,7 +104,7 @@ npm install
 > Place your browser or Postman screenshots in `screenshots/` and update these filenames if needed:
 
 - **GET /**: Welcome Route
-  ![GET /](screenshots/route_root.png)
+  ![GET /](screenshots/route_get.png)
 
 - **GET /about**: Student Info JSON
   ![GET /about](screenshots/route_about.png)
@@ -114,28 +114,10 @@ npm install
 
 - **404 Not Found Route**:
   ![404 Error](screenshots/route_404.png)
-
-- **Terminal Output & Server Status Logs**:
-  ![Terminal Logs](screenshots/server_logs.png)
-
 ---
 
-## 6. Viva Questions & Key Concepts
 
-### Q1: What is the difference between `package.json` and `node_modules`?
-- **`package.json`**: A lightweight metadata manifest file checked into source control (Git). It tracks project configuration, custom scripts, and lists abstract package dependencies and version ranges (`^5.0.0`).
-- **`node_modules`**: The physical directory containing the actual downloaded code and dependencies of all installed packages and sub-dependencies. It is large, machine-specific, and should **never** be committed to Git (excluded via `.gitignore`).
-
-### Q2: What does `app.listen()` do?
-`app.listen(port, [callback])` binds the Express application to the specified network port and host, creating an underlying Node.js `http.Server` instance. It instructs the operating system to start listening for incoming TCP connections and dispatches matching HTTP requests to Express middleware and route handlers.
-
-### Q3: What do `request` (`req`) and `response` (`res`) represent?
-- **`request` (`req`)**: An object representing the incoming HTTP request from the client. It contains request headers, HTTP method, URL path, query parameters (`req.query`), route parameters (`req.params`), and body payload (`req.body`).
-- **`response` (`res`)**: An object representing the outgoing HTTP response that the server sends back to the client. It provides methods like `res.status()`, `res.send()`, `res.json()`, and `res.setHeader()` to construct and finalize the response.
-
----
-
-## 7. Notes: Problems Faced & Solutions
+## 6. Notes: Problems Faced & Solutions
 
 1. **Port Conflicts & Server Testing**:
    - *Problem*: Testing both `http-server.js` and `index.js` simultaneously resulted in `EADDRINUSE` port collision on port 3000.
