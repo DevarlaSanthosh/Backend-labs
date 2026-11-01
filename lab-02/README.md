@@ -1,147 +1,147 @@
 # Lab 2: SQLite database and CRUD routes
 
-**D Santhosh** · **252U1R8015** · **CSE-QE 2A**  
-*Faculty: Joel Prashanth D* · *Course: Backend Development Fundamentals (Year II Term II · Aurora)*
+## Student Details
+- **Name:** D Santhosh
+- **Registration Number:** 252U1R8015
+- **Section:** CSE-QE 2A
 
 ---
 
-### Live Link
-**link**: https://backend-labs-gy39.onrender.com (or Not applicable for local database labs)
+## Live Link
+https://backend-labs-gy39.onrender.com
 
 ---
 
-## 1. Project Overview & Tasks Completed
-
-- [x] Initialized project and installed `sqlite`, `sqlite3`, `express`, and `nodemon`.
-- [x] Created `books.db` SQLite database with the `book` table schema:
-  `book(id INTEGER PRIMARY KEY AUTOINCREMENT, title TEXT, author TEXT, price INTEGER, pages INTEGER)`.
-- [x] Populated initial 10 book records into the database.
-- [x] Implemented `initializeDBAndServer()` async function that connects to SQLite using `open()` before starting the Express server.
-- [x] Built all 5 RESTful CRUD routes:
-  - `GET /books/` (Retrieve all books)
-  - `GET /books/:bookId/` (Retrieve single book by ID)
-  - `POST /books/` (Add new book)
-  - `PUT /books/:bookId/` (Update book details)
-  - `DELETE /books/:bookId/` (Remove book by ID)
-- [x] Used `?` parameterized query placeholders in every query handling user input to prevent SQL injection.
-- [x] Tested every route locally with automated test suite (`test.js`) and verified with Postman/browser.
-- [x] Created high-resolution screenshots for all CRUD operations in `screenshots/`.
+## Project Description
+This project implements a RESTful API with full CRUD (Create, Read, Update, Delete) capabilities for managing a library of books. It is built using **Node.js**, **Express**, and **SQLite** (using the `sqlite` and `sqlite3` drivers). The application initializes the SQLite database connection asynchronously prior to starting the HTTP server, and uses parameterized SQL queries with `?` placeholders across all routes to prevent SQL injection vulnerabilities.
 
 ---
 
-## 2. Database Schema
-
-The database file `books.db` contains the `book` table:
-
-```sql
-CREATE TABLE IF NOT EXISTS book (
-  id INTEGER PRIMARY KEY AUTOINCREMENT,
-  title TEXT NOT NULL,
-  author TEXT NOT NULL,
-  price INTEGER NOT NULL,
-  pages INTEGER NOT NULL
-);
-```
-
-| Column | Type | Constraints | Description |
-| :--- | :--- | :--- | :--- |
-| `id` | INTEGER | PRIMARY KEY AUTOINCREMENT | Unique identifier for each book |
-| `title` | TEXT | NOT NULL | Title of the book |
-| `author` | TEXT | NOT NULL | Author's name |
-| `price` | INTEGER | NOT NULL | Price of the book |
-| `pages` | INTEGER | NOT NULL | Total page count |
+## Requirements & Dependencies
+- **Runtime:** Node.js (v18+ or v20+)
+- **Package Manager:** npm (v9+ or v11+)
+- **Dependencies:**
+  - `express`: Minimalist web framework for routing and JSON parsing
+  - `sqlite`: Promise-based wrapper around sqlite3 for async/await support
+  - `sqlite3`: Native SQLite3 database driver
+- **DevDependencies:**
+  - `nodemon`: Utility that monitors for code changes and automatically restarts the development server
 
 ---
 
-## 3. How to Run
+## How to Install and Run
 
-### Prerequisites
-- Node.js (v18 or higher; verified on v24.18.0)
-- npm (verified on v11.16.0)
-
-### Installation
+### 1. Installation
+Navigate into the `lab-02` directory and install the required dependencies:
 ```bash
 cd lab-02
 npm install
 ```
 
-### Start the Server with Nodemon (Task 1)
+### 2. Running in Development Mode (Nodemon)
+Start the server with automatic reloading upon file changes:
 ```bash
 npm run dev
 ```
-*(Runs `nodemon index.js` which automatically restarts on code changes)*
 
-### Start the Server (Standard)
+### 3. Running in Production Mode
+Start the standard Node.js server:
 ```bash
 npm start
 ```
-*(Runs `node index.js` at `http://localhost:3000`)*
 
-### Run Automated Tests
-```bash
-npm test
+### 4. Environment Variables
+No `.env` file or environment variables are required. The server defaults to port `3000` (or uses `process.env.PORT` if provided by a cloud environment).
+
+---
+
+## Database Configuration
+
+- **Database File:** `database/books.db`
+- **Initialization Script:** `database/init.sql`
+
+### Table Schema: `book`
+```sql
+CREATE TABLE book (
+    id INTEGER PRIMARY KEY,
+    title TEXT NOT NULL,
+    author TEXT NOT NULL,
+    price INTEGER NOT NULL,
+    pages INTEGER NOT NULL
+);
 ```
-*(Runs `node test.js` executing automated end-to-end assertions against all CRUD endpoints)*
+
+### Initial Seed Data
+The database is pre-seeded with 10 classic and technical book records:
+1. *Harry Potter and the Sorcerer's Stone* — J.K. Rowling (Price: 450, Pages: 309)
+2. *The Hobbit* — J.R.R. Tolkien (Price: 399, Pages: 310)
+3. *To Kill a Mockingbird* — Harper Lee (Price: 350, Pages: 281)
+4. *1984* — George Orwell (Price: 299, Pages: 328)
+5. *The Great Gatsby* — F. Scott Fitzgerald (Price: 250, Pages: 180)
+6. *Pride and Prejudice* — Jane Austen (Price: 280, Pages: 279)
+7. *The Catcher in the Rye* — J.D. Salinger (Price: 320, Pages: 214)
+8. *Clean Code* — Robert C. Martin (Price: 650, Pages: 464)
+9. *The Pragmatic Programmer* — Andrew Hunt (Price: 720, Pages: 352)
+10. *Introduction to Algorithms* — Thomas H. Cormen (Price: 999, Pages: 1312)
+
+### Inspecting Database via SQLite CLI
+Open the database in your terminal:
+```bash
+sqlite3 database/books.db
+```
+Useful commands inside the SQLite shell:
+```sql
+.tables
+.schema book
+SELECT * FROM book;
+.exit
+```
 
 ---
 
-## 4. Endpoints Table
+## API Endpoints
 
-| Method | Endpoint | Description | Status Code | Sample Request Body | Sample Response |
-| :--- | :--- | :--- | :---: | :--- | :--- |
-| `GET` | `/` | API Information | `200 OK` | None | `{"message":"Welcome to Lab 2: SQLite database and CRUD routes API",...}` |
-| `GET` | `/books/` | Retrieve all books | `200 OK` | None | `[{"id":1,"title":"To Kill a Mockingbird","author":"Harper Lee","price":399,"pages":281},...]` |
-| `GET` | `/books/:bookId/` | Retrieve single book by ID | `200 OK` | None | `{"id":1,"title":"To Kill a Mockingbird","author":"Harper Lee","price":399,"pages":281}` |
-| `POST` | `/books/` | Add a new book | `201 Created` | `{"title":"Atomic Habits","author":"James Clear","price":499,"pages":320}` | `{"bookId":11,"message":"Book Added Successfully"}` |
-| `PUT` | `/books/:bookId/` | Update book by ID | `200 OK` | `{"title":"Atomic Habits (Updated)","price":550}` | `{"message":"Book Details Updated"}` |
-| `DELETE` | `/books/:bookId/` | Delete book by ID | `200 OK` | None | `{"message":"Book Deleted"}` |
-| `*` | Unknown path | 404 handler | `404 Not Found` | None | `{"error":"404 Not Found","message":"Cannot GET /xyz. Route does not exist."}` |
+| Method | Endpoint Path | Description | Request Body (JSON) | Success Status | Error Statuses |
+|---|---|---|---|---|---|
+| `GET` | `/books/` | Retrieves all book records | *None* | `200 OK` | `500 Internal Server Error` |
+| `GET` | `/books/:bookId/` | Retrieves a single book by ID | *None* | `200 OK` | `400 Bad Request`<br>`404 Not Found`<br>`500 Internal Server Error` |
+| `POST` | `/books/` | Adds a new book to the database | `{"title": "...", "author": "...", "price": 0, "pages": 0}` | `201 Created` | `400 Bad Request`<br>`500 Internal Server Error` |
+| `PUT` | `/books/:bookId/` | Updates an existing book by ID | `{"title": "...", "author": "...", "price": 0, "pages": 0}` | `200 OK` | `400 Bad Request`<br>`404 Not Found`<br>`500 Internal Server Error` |
+| `DELETE` | `/books/:bookId/` | Deletes a book by ID | *None* | `200 OK` | `400 Bad Request`<br>`404 Not Found`<br>`500 Internal Server Error` |
 
 ---
 
-## 5. Screenshots
+## Screenshots
 
-- **GET /books/**: Retrieve all books
-  ![GET /books/](screenshots/get_books.png)
+### 1. Get All Books (`GET /books/`)
+![Get All Books](screenshots/get-all-books.png)
 
-- **GET /books/:bookId/**: Retrieve single book by ID
-  ![GET /books/:bookId/](screenshots/get_book_one.png)
+### 2. Get Single Book (`GET /books/1/`)
+![Get Single Book](screenshots/get-single-book.png)
 
-- **POST /books/**: Add new book
-  ![POST /books/](screenshots/post_book.png)
+### 3. Add a Book (`POST /books/`)
+![Post Book](screenshots/post-book.png)
 
-- **PUT /books/:bookId/**: Update book details
-  ![PUT /books/:bookId/](screenshots/put_book.png)
+### 4. Update a Book (`PUT /books/:bookId/`)
+![Put Book](screenshots/put-book.png)
 
-- **DELETE /books/:bookId/**: Delete book
-  ![DELETE /books/:bookId/](screenshots/delete_book.png)
+### 5. Delete a Book (`DELETE /books/:bookId/`)
+![Delete Book](screenshots/delete-book.png)
 
-- **Terminal Output & Server Test Logs**:
-  ![Server Logs](screenshots/server_logs.png)
+### 6. Book Not Found 404 Route (`GET /books/99999/`)
+![Invalid Book 404](screenshots/invalid-book-404.png)
 
----
+### 7. Invalid Input 400 Route (`POST /books/` with invalid body)
+![Postman Invalid Input](screenshots/postman-invalid-input.png)
 
-## 6. Viva Questions & Key Concepts
-
-### Q1: Why await the database call?
-Database I/O operations (reading from disk, executing SQL queries, writing updates) are asynchronous and take time to complete. Because Node.js is single-threaded and non-blocking, awaiting database calls (`await db.get(...)`, `await db.all(...)`, `await db.run(...)`) pauses the execution of the asynchronous function until the database promise resolves, ensuring the server does not attempt to send an HTTP response before the query results are available.
-
-### Q2: What is SQL injection and how do placeholders prevent it?
-- **SQL Injection**: A security vulnerability that occurs when untrusted user input is directly concatenated or interpolated into a raw SQL query string (e.g., `SELECT * FROM book WHERE id = ${bookId}`). An attacker can input malicious SQL fragments (e.g., `1 OR 1=1; DROP TABLE book;`) to bypass authentication, expose data, or destroy the database.
-- **How Placeholders (`?`) Prevent It**: When using parameterized queries (`db.get('SELECT * FROM book WHERE id = ?', [bookId])`), the database engine separates the query code from the user input. The input is treated strictly as literal data/parameters, never as executable SQL code, neutralizing any injected SQL syntax.
-
-### Q3: When is PUT used instead of POST?
-- **`POST`**: Used to create a new resource. The server determines the new resource's URI/ID (e.g., auto-incrementing `id`). Calling `POST` multiple times creates multiple distinct records (not idempotent).
-- **`PUT`**: Used to update or replace an existing resource identified by a specific URL (e.g., `PUT /books/:bookId/`). Calling `PUT` multiple times with the same request payload results in the exact same resource state (idempotent).
+### 8. SQLite Database Verification (CLI)
+![SQLite Database](screenshots/sqlite-database.png)
 
 ---
 
-## 7. Notes: Problems Faced & Solutions
+## Notes
 
-1. **Native Addon Build Issues on Node.js 24**:
-   - *Problem*: Attempting to install `better-sqlite3` on Windows with Node v24 failed because prebuilt binaries were missing and `node-gyp` failed without Visual Studio C++ build tools.
-   - *Solution*: Replaced it with the curriculum-standard `sqlite` and `sqlite3` driver libraries which installed cleanly with precompiled binaries and integrated seamlessly with `open()` and `async/await`.
-
-2. **Database Initialization Before Starting Server**:
-   - *Problem*: Starting the Express server before SQLite finishes opening caused route queries to fail with null reference errors.
-   - *Solution*: Implemented the mandatory `initializeDBAndServer()` function ensuring `db = await open(...)` succeeds and the `book` table is seeded before `app.listen(PORT)` is invoked.
+### Problems Faced and How They Were Solved
+- **Asynchronous Startup Sequencing:** Express routes can receive traffic immediately if `app.listen()` is called synchronously at file evaluation time, causing database queries to fail with `Cannot read properties of null` before the SQLite file is opened. This was solved by structuring startup inside `initializeDBAndServer()`, which awaits `open(...)` before executing `app.listen(...)`.
+- **SQL Injection Prevention:** Directly interpolating user values from `req.params` or `req.body` into SQL strings creates severe SQL injection security vulnerabilities. This was solved by employing parameterized queries (`?` placeholders) with arrays of sanitized parameters passed directly to the SQLite query engine.
+- **Path Resolution Stability:** Opening SQLite using relative strings like `./database/books.db` causes errors if the terminal runs from different directories (e.g. repo root vs `lab-02/`). Using `path.join(__dirname, "database", "books.db")` guarantees a stable absolute path regardless of current working directory.
