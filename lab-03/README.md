@@ -337,7 +337,7 @@ This issue occurs when an asynchronous database operation is not properly awaite
 https://github.com/DevarlaSanthosh/Backend-labs
 
 **Live URL:** 
-https://backend-labs-3-39u0.onrender.com 
+https://backend-labs-3-2rpm.onrender.com
 
 
 The application is configured for deployment using the `render.yaml` configuration file.
@@ -379,3 +379,4 @@ The server uses the `PORT` environment variable and listens on `0.0.0.0` for dep
 The project successfully implements RESTful APIs using Express.js and SQLite. It demonstrates resource-based routing, search functionality, sorting, pagination, price range filtering, request validation, proper HTTP status codes, consistent error handling, and debugging techniques.
 
 All API endpoints were tested successfully using Postman. This experiment provided practical experience in developing, validating, testing, and preparing a REST API for deployment.
+
