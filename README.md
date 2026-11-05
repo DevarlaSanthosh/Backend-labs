@@ -12,7 +12,7 @@
 | :--- | :--- | :--- | :---: |
 | **Lab 01** | **Node.js and Express server** | [`lab-01/`](./lab-01/) | Completed |
 | **Lab 02** | **SQLite Database and CRUD Routes** | [`lab-02/`](./lab-02/) | Completed |
-| **Lab 03** | *Upcoming Lab* | `lab-03/` | Pending |
+| **Lab 03** | **REST API, Query Parameters, Validation and Debugging** | [`lab-03/`](./lab-03/) | Completed |
 | **Lab 04** | *Upcoming Lab* | `lab-04/` | Pending |
 | **Lab 05** | *Upcoming Lab* | `lab-05/` | Pending |
 | **Lab 06** | *Upcoming Lab* | `lab-06/` | Pending |
